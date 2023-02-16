@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:21:00 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/16 17:49:28 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:40:18 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	ft_pow(int nb, int power)
 	return (result);
 }
 
-
 void	binary_to_text(char *s)
 {
 	int	decimal;
@@ -44,7 +43,7 @@ void	binary_to_text(char *s)
 	decimal = 0;
 	power = 0;
 	i = 7;
-	while (s[i] >= 0)
+	while (i >= 0)
 	{
 		if (s[i] == '1')
 		{
@@ -52,14 +51,15 @@ void	binary_to_text(char *s)
 		}
 		power++;
 		i--;
+		ft_printf("%c", ((char)decimal));
+		i = i + 8;
 	}
-	return (decimal);
 }
 
 void	signal_handler(int signum)
 {
-	int		i;
-	char	message_binary[8];
+	static int	i;
+	static char	message_binary[8];
 
 	i = 0;
 	if (signum == SIGUSR1)
@@ -76,14 +76,26 @@ void	signal_handler(int signum)
 
 int	main(void)
 {
-	struct sigaction signal_received;
+	struct sigaction	signal_received;
 
 	ft_printf("abaiao-r server online\nServer's PID: %d\n", getpid());
-	signal_received.sa_flags = 0;
 	signal_received.sa_handler = signal_handler;
+	signal_received.sa_flags = 0;
 	sigaction(SIGUSR1, &signal_received, NULL);
 	sigaction(SIGUSR2, &signal_received, NULL);
+	while (1)
+		usleep(50);
+	return (0);
 }
+
+/* main to test binary_to_text function */
+/* int	main(void)
+{
+	char	*s;
+
+	s = "0100100";
+	binary_to_text(s);
+} */
 
 /* main to test ft_power */
 /* int	main(void)
