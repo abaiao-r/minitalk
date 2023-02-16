@@ -6,15 +6,20 @@
 #    By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 16:08:07 by abaiao-r          #+#    #+#              #
-#    Updated: 2023/02/13 18:31:51 by abaiao-r         ###   ########.fr        #
+#    Updated: 2023/02/16 16:40:49 by abaiao-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_CLIENT = client
 NAME_SERVER = server
 
-SRC_CLIENT = client.c \
-SRC_SERVER = server.c \
+SRC_CLIENT = 	client.c \
+				ft_printf.c \
+				ft_atoi.c
+
+SRC_SERVER = 	server.c \
+				ft_printf.c \
+				ft_atoi.c
 		
 
 OBJS_CLIENT = $(SRC_CLIENT:.c=.o)

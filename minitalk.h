@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:07:46 by andrefranci       #+#    #+#             */
-/*   Updated: 2023/02/15 17:37:11 by andrefranci      ###   ########.fr       */
+/*   Updated: 2023/02/16 16:43:09 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "minitalk.h"
+# include <stdio.h>
+# include <stdarg.h>
+
+int	ft_printf(const char *s, ...);
+int	ft_atoi(const char *nptr);
 
 #endif
