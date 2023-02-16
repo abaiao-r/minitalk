@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/16 19:21:07 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:52:52 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ void	send_signals(int pid, char *message)
 			i++;
 		}
 		characther++;
+	}
+	i = 0;
+	while (i < 8)
+	{
+		kill(pid, SIGUSR1);
+		usleep(50);
+		i++;
 	}
 }
 

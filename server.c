@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:21:00 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/16 19:40:18 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/16 20:00:07 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	binary_to_text(char *s)
 		}
 		power++;
 		i--;
-		ft_printf("%c", ((char)decimal));
-		i = i + 8;
 	}
+	ft_printf("%c", ((char)decimal));
+	i = i + 8;
 }
 
 void	signal_handler(int signum)
@@ -85,7 +85,6 @@ int	main(void)
 	sigaction(SIGUSR2, &signal_received, NULL);
 	while (1)
 		usleep(50);
-	return (0);
 }
 
 /* main to test binary_to_text function */
