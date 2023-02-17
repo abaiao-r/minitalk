@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/17 16:22:56 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/17 20:53:25 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	main(int argc, char **argv)
 	char	*message;
 
 	if (argc != 3)
-		return (ft_printf("[ERROR] Enter 3 arguments in the terminal as follow: ./client <PID> <Message>"));
+		return (ft_printf("[ERROR] Enter 3 arguments\
+in the terminal as follow: ./client <PID> <Message>"));
 	else if (argc == 3)
 	{
 		server_id = ft_atoi(argv[1]);

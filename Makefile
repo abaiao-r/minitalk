@@ -6,7 +6,7 @@
 #    By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 16:08:07 by abaiao-r          #+#    #+#              #
-#    Updated: 2023/02/16 18:50:06 by abaiao-r         ###   ########.fr        #
+#    Updated: 2023/02/17 18:59:25 by abaiao-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,13 @@ NAME_SERVER = server
 
 SRC_CLIENT = 	client.c \
 				ft_printf.c \
-				ft_atoi.c
+				ft_atoi.c \
+				ft_memset.c
 
 SRC_SERVER = 	server.c \
 				ft_printf.c \
-				ft_atoi.c
+				ft_atoi.c \
+				ft_memset.c
 		
 
 OBJS_CLIENT = $(SRC_CLIENT:.c=.o)
