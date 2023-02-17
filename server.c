@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:21:00 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/16 20:00:07 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:23:08 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,24 @@ void	binary_to_text(char *s)
 	i = i + 8;
 }
 
-void	signal_handler(int signum)
+void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 {
 	static int	i;
-	static char	message_binary[8];
+	static char	message_binary[9];
+	(void) ucontext;
+	(void) info;
 
-	i = 0;
-	if (signum == SIGUSR1)
+	if (sig == SIGUSR1)
 		message_binary[i] = '0';
-	else if (signum == SIGUSR2)
+	else if (sig == SIGUSR2)
 		message_binary[i] = '1';
 	i++;
 	if (i == 8)
 	{
+		message_binary[i] = '\0';
 		i = 0;
 		binary_to_text(message_binary);
+		memset(message_binary, 0, 8);
 	}
 }
 
@@ -79,12 +82,14 @@ int	main(void)
 	struct sigaction	signal_received;
 
 	ft_printf("abaiao-r server online\nServer's PID: %d\n", getpid());
-	signal_received.sa_handler = signal_handler;
-	signal_received.sa_flags = 0;
+	signal_received.sa_sigaction = signal_handler;
+	signal_received.sa_flags = SA_SIGINFO;
+
 	sigaction(SIGUSR1, &signal_received, NULL);
 	sigaction(SIGUSR2, &signal_received, NULL);
 	while (1)
-		usleep(50);
+		pause ();
+	return (0);
 }
 
 /* main to test binary_to_text function */

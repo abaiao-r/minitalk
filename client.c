@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/16 19:52:52 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:22:56 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	send_signals(int pid, char *message)
 	while (message[characther])
 	{
 		i = 0;
-		while (i < 8)
+		while (i <= 7)
 		{
-			if (((unsigned char)(message[characther] >> (8 - i)) & 1) == 0)
+			if (((unsigned char)(message[characther] >> (7 - i)) & 1) == 0)
 				kill(pid, SIGUSR1);
-			else if (((unsigned char)(message[characther] >> (8 - i)) & 1) == 1)
+			else if (((unsigned char)(message[characther] >> (7 - i)) & 1) == 1)
 				kill(pid, SIGUSR2);
-			usleep(50);
+			usleep(500);
 			i++;
 		}
 		characther++;
@@ -36,7 +36,7 @@ void	send_signals(int pid, char *message)
 	while (i < 8)
 	{
 		kill(pid, SIGUSR1);
-		usleep(50);
+		usleep(500);
 		i++;
 	}
 }

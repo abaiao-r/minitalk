@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:10:22 by andrefranci       #+#    #+#             */
-/*   Updated: 2023/02/16 16:36:37 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:54:19 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int	ft_printf(const char *s, ...)
 	va_end(args);
 	return (size);
 }
+/* main to test ft_printf */
 /* int	main(void)
 {
 	int	a;
