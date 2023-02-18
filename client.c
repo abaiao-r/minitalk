@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/17 20:53:25 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:16:25 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 void	send_signals(int pid, char *message)
 {
-	int	characther;
+	int	character;
 	int	i;
 
-	characther = 0;
-	while (message[characther])
+	character = 0;
+	while (message[character])
 	{
 		i = 0;
-		while (i <= 7)
+		while (i < 8)
 		{
-			if (((unsigned char)(message[characther] >> (7 - i)) & 1) == 0)
+			if (((unsigned char)(message[character] >> (7 - i)) & 1) == 0)
 				kill(pid, SIGUSR1);
-			else if (((unsigned char)(message[characther] >> (7 - i)) & 1) == 1)
+			else if (((unsigned char)(message[character] >> (7 - i)) & 1) == 1)
 				kill(pid, SIGUSR2);
 			usleep(500);
 			i++;
 		}
-		characther++;
+		character++;
 	}
 	i = 0;
 	while (i < 8)
