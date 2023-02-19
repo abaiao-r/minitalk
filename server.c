@@ -6,7 +6,7 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:21:00 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/18 12:49:31 by andrefranci      ###   ########.fr       */
+/*   Updated: 2023/02/19 13:57:18 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 	}
 }
 
+/*  The server listens for two signals: SIGUSR1 and SIGUSR2. When a signal 
+is received, the signal handler function signal_handler is called. The main 
+function sets up the signal handler using the sigaction function and waits 
+for signals to be received using the pause function.*/
 int	main(void)
 {
 	struct sigaction	signal_received;

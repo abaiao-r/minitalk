@@ -6,12 +6,27 @@
 /*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/18 17:16:25 by andrefranci      ###   ########.fr       */
+/*   Updated: 2023/02/19 13:54:10 by andrefranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+/* The send_signals function takes the server PID and message as 
+parameters and sends the message character by character to the 
+server using signals. It uses two different signals to represent 
+0 and 1 bits of the message, respectively: SIGUSR1 and SIGUSR2.
+The message is sent character by character, and each character is 
+sent bit by bit. The outer loop iterates over each character of 
+the message, and the inner loop iterates over each bit of the 
+character. The rightmost (least significant) bit is sent first.
+If the bit being sent is 0, the client sends a SIGUSR1 signal 
+to the server. If the bit is 1, it sends a SIGUSR2 signal. 
+The usleep function is called after each signal to introduce a 
+small delay, allowing the server to handle the signal before the 
+next one is sent. After sending all the characters in the message, 
+the function sends 8 SIGUSR1 signals to indicate the end of the message.
+ */
 void	send_signals(int pid, char *message)
 {
 	int	character;
@@ -41,6 +56,10 @@ void	send_signals(int pid, char *message)
 	}
 }
 
+/* The program takes in two arguments from the command line: 
+the first argument is the process ID (PID) of the server program, 
+and the second argument is the message that the client wants to 
+send to the server.*/
 int	main(int argc, char **argv)
 {
 	int		server_id;
