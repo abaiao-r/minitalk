@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/19 13:54:10 by andrefranci      ###   ########.fr       */
+/*   Updated: 2023/02/22 13:18:56 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void	signal_handler(int signal)
+{
+	if (signal == SIGUSR2)
+		ft_printf("Message received");
+}
 
 /* The send_signals function takes the server PID and message as 
 parameters and sends the message character by character to the 
@@ -72,6 +78,7 @@ in the terminal as follow: ./client <PID> <Message>"));
 	{
 		server_id = ft_atoi(argv[1]);
 		message = argv[2];
+		signal(SIGUSR2, signal_handler);
 		send_signals(server_id, message);
 	}
 	return (0);

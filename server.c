@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefrancisco <andrefrancisco@student.    +#+  +:+       +#+        */
+/*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:21:00 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/19 14:14:03 by andrefranci      ###   ########.fr       */
+/*   Updated: 2023/02/22 13:40:41 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,6 @@ int	ft_pow(int nb, int power)
 	{
 		i = 1;
 		result = nb;
-		while (i != power)
-		{
-			result = result * nb;
-			i++;
-		}
 	}
 	return (result);
 }
@@ -119,7 +114,6 @@ void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 	static char	message_binary[9];
 
 	(void)ucontext;
-	(void)info;
 	if (sig == SIGUSR1)
 		message_binary[i] = '0';
 	else if (sig == SIGUSR2)
@@ -132,6 +126,7 @@ void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 		binary_to_text(message_binary);
 		ft_memset(message_binary, 0, 8);
 	}
+	kill(info->si_pid, SIGUSR2);
 }
 
 /*  The server listens for two signals: SIGUSR1 and SIGUSR2. When a signal 
