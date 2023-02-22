@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/22 16:19:09 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:33:23 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	signal_handler(int signal)
 	{
 		i++;
 		if (i == g_message_length)
-			ft_printf("Message received");
+			ft_printf("Message received ✅✅");
 	}
 }
 
