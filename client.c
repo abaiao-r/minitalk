@@ -6,16 +6,34 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/22 13:18:56 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:19:09 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+int		g_message_length;
+
+int	ft_strlen(char *message)
+{
+	int	i;
+
+	i = 0;
+	while (message[i])
+		i++;
+	return (i);
+}
+
 void	signal_handler(int signal)
 {
+	static int	i;
+
 	if (signal == SIGUSR2)
-		ft_printf("Message received");
+	{
+		i++;
+		if (i == g_message_length)
+			ft_printf("Message received");
+	}
 }
 
 /* The send_signals function takes the server PID and message as 
@@ -71,6 +89,7 @@ int	main(int argc, char **argv)
 	int		server_id;
 	char	*message;
 
+	g_message_length = ft_strlen(argv[2]);
 	if (argc != 3)
 		return (ft_printf("[ERROR] Enter 3 arguments\
 in the terminal as follow: ./client <PID> <Message>"));
@@ -80,6 +99,7 @@ in the terminal as follow: ./client <PID> <Message>"));
 		message = argv[2];
 		signal(SIGUSR2, signal_handler);
 		send_signals(server_id, message);
+		send_signals(server_id, "\n");
 	}
 	return (0);
 }
