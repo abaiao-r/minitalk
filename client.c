@@ -6,7 +6,7 @@
 /*   By: abaiao-r <abaiao-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:20:46 by abaiao-r          #+#    #+#             */
-/*   Updated: 2023/02/22 16:33:23 by abaiao-r         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:05:59 by abaiao-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strlen(char *message)
 	int	i;
 
 	i = 0;
-	while (message[i])
+	while (message && message[i])
 		i++;
 	return (i);
 }
